@@ -1,5 +1,9 @@
 function [ dilated_image ] = dilate( image, se, include_center )
 
+if nargin == 2
+    include_center = true;
+end
+
 mixed_image = mix_image(image);
 dilated_image = image(:, :, :);
 siz = size(image);
