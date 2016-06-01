@@ -1,12 +1,23 @@
-function [ max_value, max_row, max_col ] = max_mixed_value( mixed_image, se, row, col)
+function [ max_value, max_row, max_col ] = max_mixed_value( mixed_image, se, row, col, include_center)
+
+if nargin == 4
+    include_center = true;
+end
+
 siz = size(mixed_image);
 
 rows = siz(1);
 cols = siz(2);
 
-max_value = mixed_image(row, col);
-max_row = row;
-max_col = col;
+if include_center == true
+    max_value = mixed_image(row, col);
+    max_row = row;
+    max_col = col;
+else
+    max_value = -1;
+    max_row = -1;
+    max_col = -1;
+end
 
 for i=1:size(se, 1)
     se_i = row + se(i, 1);

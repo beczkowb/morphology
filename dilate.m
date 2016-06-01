@@ -1,4 +1,4 @@
-function [ dilated_image ] = dilate( image, se )
+function [ dilated_image ] = dilate( image, se, include_center )
 
 mixed_image = mix_image(image);
 dilated_image = image(:, :, :);
@@ -11,7 +11,7 @@ col = 0;
 
 for i=1:rows
     for j=1:cols
-        [~ , row, col] = max_mixed_value(mixed_image, se, i, j);
+        [~ , row, col] = max_mixed_value(mixed_image, se, i, j, include_center);
         dilated_image(i, j, :) = image(row, col, :);
     end
 end

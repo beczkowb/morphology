@@ -1,12 +1,23 @@
-function [ min_value, min_row, min_col ] = min_mixed_value( mixed_image, se, row, col)
+function [ min_value, min_row, min_col ] = min_mixed_value( mixed_image, se, row, col, include_center)
+
+if nargin == 4
+    include_center = True;
+end
+
 siz = size(mixed_image);
 
 rows = siz(1);
 cols = siz(2);
 
-min_value = mixed_image(row, col);
-min_row = row;
-min_col = col;
+if include_center == true
+    min_value = mixed_image(row, col);
+    min_row = row;
+    min_col = col;
+else
+    min_value = 777777777;
+    min_row = -1;
+    min_col = -1;
+end
 
 for i=1:size(se, 1)
     se_i = row + se(i, 1);
