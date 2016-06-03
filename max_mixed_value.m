@@ -29,4 +29,11 @@ for i=1:size(se, 1)
     end
 end
 
+
+if max_value == -1
+    max_value = mixed_image(row, col);
+    max_row = row;
+    max_col = col;
+end
+
 end

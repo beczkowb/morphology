@@ -29,4 +29,10 @@ for i=1:size(se, 1)
     end
 end
 
+if min_value == 777777777
+    min_value = mixed_image(row, col);
+    min_row = row;
+    min_col = col;
+end
+
 end
