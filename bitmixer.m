@@ -1,5 +1,4 @@
 function [mixed_bits] = bitmixer(r, g, b)
-
 r_binary = de2bi(r, 8);
 g_binary = de2bi(g, 8);
 b_binary = de2bi(b, 8);
