@@ -2,7 +2,7 @@ function [ geo_image ] = geo_dilation( image, mask, se )
 
 rows = size(image, 1);
 cols = size(image, 2);
-geo_image = zeros(rows, cols, 3);
+geo_image = image;
 
 dilated_image = dilate(image, se);
 
