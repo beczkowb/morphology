@@ -69,27 +69,23 @@ imwrite(bottom_hat_image, 'wynik_hsv_bottom_hat.png');
 
 
 %rekonstrukcja przez dylację -- operacja trwa około 15 min !!!
-mask = imread('images/paski.png');
-marker = imread('images/znacznik.png');
+mask = rgb2hsv(imread('images/paski.png'));
+marker = rgb2hsv(imread('images/znacznik.png'));
 
-reconstructed = dilation_recontruction(marker, mask, se, 30);
-figure('Name', 'dilation reconstruction');
-imwrite(reconstructed, 'rekonstrukcja_dylacja_wynik.png');
+reconstructed = hsv2rgb(im2double(dilation_recontruction(marker, mask, se, 30)));
+imwrite(reconstructed, 'rekonstrukcja_dylacja_wynik_hsv.png');
 
 %rekonstrukcja przez erozję -- operacja trwa około 40 min !!!
-mask = imread('images/shapes.jpg');
-marker = imread('images/znacznik_shapes.png');
+mask = rgb2hsv(imread('images/shapes.jpg'));
+marker = rgb2hosv(imread('images/znacznik_shapes.png'));
 
 reconstructed = erosion_reconstruction(marker, mask, se, 35);
-figure('Name', 'erosion reconstruction');
-imwrite(reconstructed, 'rekonstrukcja_erozja_wynik.png');
+imwrite(hsv2rgb(reconstructed), 'rekonstrukcja_erozja_wynik_hsv.png');
 
 % otwarcie przez rekonstrukcję
 opened_image = open_reconstruction(image, se);
-figure('Name', 'open reconstruction');
-imwrite(opened_image, 'otwarcie_rekonstrukcja_wynik.png');
+imwrite(hsv2rgb(opened_image), 'otwarcie_rekonstrukcja_wynik_hsv.png');
 
 % zamknięcie przez rekonstrukcję
 closed_image = close_reconstruction(image, se);
-figure('Name', 'close reconstruction');
-imwrite(opened_image, 'zamkniecie_rekonstrukcja_wynik.png');
+imwrite(hsv2rgb(closed_image), 'zamkniecie_rekonstrukcja_wynik_hsv.png');
