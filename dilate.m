@@ -1,9 +1,26 @@
 function [ dilated_image ] = dilate( image, se, include_center )
+%Przykładowa postać se: 
+%  jeśli chcemy uzyskać element strukturalny jak pokazano poniżej:
+%                       1
+%                      111
+%                       1
+%  argument se powinien przyjąć postać:
+%                      [1 0; -1 0; 0 1; 0 -1]
+%  domyślnie brany jest pod uwagę także element (0, 0), a jeśli
+%  chcemy, aby element strukturalny miał postać:
+%                       1
+%                      1 11
+%                       1
+%  należy ustawić parametr include_center na false, a parametr 
+%  se ustawić na [1 0; -1 0; 0 1; 0 -1; 0 2]
+%
+%Funkcja przetwarza zarówno obrazy rgb jak i hsv
 
 if nargin == 2
     include_center = true;
 end
 
+%mixed_image będzie używane do porządkowania
 mixed_image = mix_image(image);
 dilated_image = image(:, :, :);
 siz = size(image);

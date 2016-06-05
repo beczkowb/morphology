@@ -1,4 +1,6 @@
 function [ min_value, min_row, min_col ] = min_mixed_value( mixed_image, se, row, col, include_center)
+%Funkcja zwraca wartość oraz indeksy minimum spośród otoczenia piksela o
+%indeksach (row, cols), otoczenie jest określone przez argument se.
 
 if nargin == 4
     include_center = True;
@@ -19,9 +21,11 @@ else
     min_col = -1;
 end
 
+%Funkcja iteruje po całym otoczeniu piksela, aby znaleźć minimum
 for i=1:size(se, 1)
     se_i = row + se(i, 1);
     se_j = col + se(i, 2);
+    %Sprawdzanie czy dany punkt otoczenia jest w granicach obrazu
     if (se_i >= 1 && se_i <= rows) && (se_j >= 1 && se_j <= cols) && (mixed_image(se_i, se_j) < min_value)
         min_value = mixed_image(se_i, se_j);
         min_row = se_i;

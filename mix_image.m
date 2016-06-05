@@ -1,4 +1,6 @@
 function [ mixed_image ] = mix_image( image )
+%Zmienia zdjęcie tak że każdy piksel przechodzi z postaci wektorowej w 
+%skalarną przy użyciu techniki mieszania bitów.
 
 if isfloat(image) == true
     image = im2uint8(image);

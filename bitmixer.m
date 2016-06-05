@@ -1,4 +1,6 @@
 function [mixed_bits] = bitmixer(r, g, b)
+%Z trzech wektorów, z których każdy ma długość 8, tworzy jeden wektor
+%o długości 24 przy użyciu techniki mieszania bitów.
 
 r_binary = de2bi(r, 8);
 g_binary = de2bi(g, 8);
