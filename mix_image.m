@@ -1,4 +1,9 @@
 function [ mixed_image ] = mix_image( image )
+
+if isfloat(image) == true
+    image = im2uint8(image);
+end
+
 siz = size(image);
 rows = siz(1);
 cols = siz(2);
