@@ -58,8 +58,8 @@ imshow(bottom_hat_image);
 imwrite(bottom_hat_image, 'wynik_bottom_hat.png');
 
 %rekonstrukcja przez dylację -- operacja trwa około 15 min !!!
-mask = imread('images/paski.png');
-marker = imread('images/znacznik.png');
+mask = rgb2hsv(imread('images/paski.png'));
+marker = rgb2hsv(imread('images/znacznik.png'));
 
 reconstructed = dilation_reconstruction(marker, mask, se, 30);
 imwrite(reconstructed, 'rekonstrukcja_dylacja_wynik.png');
