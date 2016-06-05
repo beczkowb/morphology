@@ -1,4 +1,4 @@
-function [ rec_image ] = erosion_recontruction( image, mask, se, loops )
+function [ rec_image ] = erosion_reconstruction( image, mask, se, loops )
 
 rec_image = image;
 
