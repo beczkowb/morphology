@@ -1,4 +1,4 @@
-image = imread('images/kwiaty.png');
+primage = imread('images/kwiaty.png');
 image = rgb2hsv(image);
 
 %se:
@@ -66,3 +66,30 @@ figure('Name', 'bottom hat');
 bottom_hat_image = hsv2rgb(bottom_hat_image);
 imshow(bottom_hat_image);
 imwrite(bottom_hat_image, 'wynik_hsv_bottom_hat.png');
+
+
+%rekonstrukcja przez dylację -- operacja trwa około 15 min !!!
+mask = imread('images/paski.png');
+marker = imread('images/znacznik.png');
+
+reconstructed = dilation_recontruction(marker, mask, se, 30);
+figure('Name', 'dilation reconstruction');
+imwrite(reconstructed, 'rekonstrukcja_dylacja_wynik.png');
+
+%rekonstrukcja przez erozję -- operacja trwa około 40 min !!!
+mask = imread('images/shapes.jpg');
+marker = imread('images/znacznik_shapes.png');
+
+reconstructed = erosion_reconstruction(marker, mask, se, 35);
+figure('Name', 'erosion reconstruction');
+imwrite(reconstructed, 'rekonstrukcja_erozja_wynik.png');
+
+% otwarcie przez rekonstrukcję
+opened_image = open_reconstruction(image, se);
+figure('Name', 'open reconstruction');
+imwrite(opened_image, 'otwarcie_rekonstrukcja_wynik.png');
+
+% zamknięcie przez rekonstrukcję
+closed_image = close_reconstruction(image, se);
+figure('Name', 'close reconstruction');
+imwrite(opened_image, 'zamkniecie_rekonstrukcja_wynik.png');
