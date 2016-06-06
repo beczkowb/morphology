@@ -77,9 +77,9 @@ imwrite(reconstructed, 'rekonstrukcja_dylacja_wynik_hsv.png');
 
 %rekonstrukcja przez erozję -- operacja trwa około 40 min !!!
 mask = rgb2hsv(imread('images/shapes.jpg'));
-marker = rgb2hsv(imread('images/znacznik_shapes.png'));
+marker = rgb2hsv(imread('images/znaczniki_shapes_hsv.png'));
 
-reconstructed = erosion_reconstruction(marker, mask, se, 35);
+reconstructed = erosion_reconstruction(marker, mask, se, 20);
 imwrite(hsv2rgb(reconstructed), 'rekonstrukcja_erozja_wynik_hsv.png');
 
 % otwarcie przez rekonstrukcję
